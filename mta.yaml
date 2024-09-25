@@ -27,6 +27,7 @@ modules:
     requires:
       - name: myapp1-db
       - name: myapp1-auth
+      - name: myapp1-logging
 
   - name: myapp1-db-deployer
     type: hdb
@@ -51,6 +52,7 @@ modules:
           url: ~{srv-url}
           forwardAuthToken: true
       - name: myapp1-auth
+      - name: myapp1-logging
 
 resources:
   - name: myapp1-db
@@ -67,3 +69,8 @@ resources:
       config:
         xsappname: myapp1-${org}-${space}
         tenant-mode: dedicated
+  - name: myapp1-logging
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: application-logs
+      service-plan: standard

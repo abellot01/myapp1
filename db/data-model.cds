@@ -5,8 +5,9 @@ context myapp1.db {
       name : String;
     };
  
-    entity TestTable {
-      key col : String;
+    entity SampleData {
+      key ID : Integer;
+      value : String;
     };
 }
  

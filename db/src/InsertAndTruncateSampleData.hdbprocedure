@@ -1,0 +1,15 @@
+PROCEDURE "InsertAndTruncateSampleData"()
+LANGUAGE SQLSCRIPT
+AS
+BEGIN
+    DECLARE counter INT := 1;
+    
+    -- Loop to insert 1000000 records
+    WHILE counter <= 1000000 DO
+        INSERT INTO myapp1_DB_SAMPLEDATA (ID, value) VALUES (:counter, ROUND(RAND() * 100, 2));
+        counter := counter + 1;
+    END WHILE;
+
+    -- Truncate the table
+    TRUNCATE TABLE myapp1_DB_SAMPLEDATA;
+END;
